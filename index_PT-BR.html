@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang=en>
+  <head>
+	<meta charset=utf-8>
+    <title>Code Monster from Crunchzilla</title>
+	<link rel=icon type="image/png" href=i/favicon.png>
+	<link rel="shortcut icon" href=i/favicon.ico>
+
+    <link rel=stylesheet href=thirdparty/codemirror.css>
+    <link rel=stylesheet href=thirdparty/speechbubble.css>
+	<link rel=stylesheet href=codemonster.css>
+
+	<meta property="og:title" content="Code Monster da Crunchzilla" />
+	<meta property="og:url" content="http://www.crunchzilla.com/code-monster" />
+    <meta property="og:image" content="http://www.crunchzilla.com/i/monster2.png" />
+    <meta property="og:description" content="Code Monster atiça a curiosidade das crianças para a programação. É uma combinação de jogo e tutorial onde as crianças aprendem com experiências de programação." />
+	<meta name="description" content="Code Monster atiça a curiosidade das crianças para a programação. É uma combinação de jogo e tutorial onde as crianças aprendem com experiências de programação" />
+  </head>
+
+  <body>
+
+	<noscript>
+	  <h2>
+	    Code Monster atiça as crianças sobre programação. É uma
+	    combinação de jogo e tutorial onde as crianças aprendem
+	    com experiências de programação.
+	    <p>
+	    Code Monster usa Javascript. O Javascript tem que estar 
+	    habilitado se você quiser brincar com o Code Monster. O Code
+	    Monster não poderá brincar com você sem isso.
+	    <br><br><br>
+	  </h2>
+	</noscript>
+	<div class=not-selectable unselectable=on id=tutor>
+	  <div id=tutor-avatar unselectable=on><img id=tutor-img unselectable=on src=i/tutor0.png /></div>
+	  <div id=tutor-talk unselectable=on>
+				<p class="speech-bubble-green" unselectable=on id=tutor-message> </p>
+	  </div>
+	</div>
+
+	<div id=code-errors class=not-selectable unselectable=on></div>
+
+	<div class=not-selectable unselectable=on style="overflow:hidden;">
+    <textarea id=code name=code></textarea>
+    <iframe id=preview></iframe>
+	</div>
+
+	<div class=not-selectable unselectable=on style="overflow: hidden; width: 100%;">
+	  <div style="float: left; width: 100px;">
+		<span class="button not-selectable" title="Reiniciar o código dessa lição" unselectable=on id=reset-button>REINICIAR</span>
+	  </div>
+	  <div style="float: left; margin-left: 100px; margin-top: 2px; width: 400px; text-align: center;">
+		<span id=lesson-section></span>
+	  </div>
+	  <div style="float: right;">
+		<span id=lesson-number style="display: none;">Lição 1</span>
+		<span class="button not-selectable" title="Voltar uma lição" style="margin-right:10px;" unselectable=on id=back-button>VOLTAR</span>
+      </div>
+	</div>
+	<div class=not-selectable unselectable=on style="overflow: hidden; width: 100%; line-height: 10px;">
+	  <div style="text-align: center;">
+		<progress id=lesson-progress max=100 value=0 title="0% completada"></progress>
+	  </div>
+	</div>
+	<div id=info-links class=not-selectable unselectable=on>
+	  <span class=info-link unselectable=on>Como Brincar</span>
+	  |
+	  <span class=info-link unselectable=on>Lições</span>
+	  |
+	  <span class=info-link unselectable=on>Sobre</span>
+	  |
+	  <span class=info-link unselectable=on>FAQ</span>
+	  |
+	  <span class=info-link unselectable=on>Termos de Uso</span>
+	  |
+	  <span class=info-link unselectable=on>Privacidade</span>
+	  |
+	  <span class=info-link unselectable=on>Contato</span>
+	  |
+	  <span unselectable=on>&copy; 2015</span>
+	</div>
+
+	<div id=como-brincar style="display: none;">
+	  <h3>Como brincar</h3>
+	  Code Monster ensina crianças e adultos um pouco sobre programação Javascript!
+	  <br><br>
+	  É fácil de brincar. Siga as instruções e faça o que o Code
+	  Monster diz. Se não conseguir pule para a próxima lição.
+	  Você sempre pode voltar depois! 
+	  <br><br>
+	  Clique no botão Reiniciar se você complicou seu código e quiser 
+	  recomeçar a lição. Clique no botão Voltar para voltar a lição anterior.
+	  Você pode pular para uma lição específica ou voltar ao começo usando
+	  o link "Seções"
+	  <br><br>
+	  Code Monster salva em qual lição você está, então sinta-se a vontade
+	  para parar e voltar depois. Enquanto você voltar no mesmo navegador e na
+	  mesma máquina, você voltará para sua lição.
+	  <br><br>
+	  Divirta-se!
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=lições style="display: none;">
+	  <h3>Pular para uma Seção:</h3>
+	  <ol id=lesson-sections-list>
+	  </ol>
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=sobre style="display: none;">
+	  <h3>Sobre</h3>
+	  Code Monster da Crunchzilla é um tutorial interativo para crianças
+	  que foca na ação. Mudanças no código imediatamente levam a resultados
+	  visíveis.
+	  <br><br>
+	  Os projetos começão com simples caixas e cores, progredindo
+	  rapidamente excitantes experimentos com animações e fractais. Conceitos
+	  importantes de programação como variáveis, loops, condicionais, expressões
+	  e funções são introduzidos com exemplos.
+	  <br><br> 
+	  Code Monster é uma introdução suave e divertida aos conceitos de programação.
+	  É o primeiro passo para aprender a programar. Ele não tem a intenção de 
+	  ensinar tudo sobre ciência da computação e programação.
+	  <br><br>
+	  Code Monster é baseado em Seattle, WA. Ele é parte da suite Crunchzilla de
+	  jogos e projetos educacionais desenvolvida pela Geeky Ventures.
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=faq style="display: none;">
+	  <h3>Perguntas mais comuns</h3>
+	  <b>O que é esse c em coisas como <code>c.save()</code>?</b>
+	  <br><br>
+	  É um pouco técnico mas, se você quiser saber mais detalhes, <code>c</code> é uma 
+	  variável que o Code Monster cria para você e que contém o contexto de tela 2D.
+	  O código que cria a variável <code>c</code>, que fica escondido, parece com isso
+	  <br><br>
+	  <code>var c = document.getElementById('pane').getContext('2d');</code>
+	  <br><br>
+	  <b>Como eu salvo meu código e uso fora do Code Monster?</b>
+	  <br><br>
+	  Resposta curta: Não é super fácil, mas você pode copiar e colar seu 
+	  código e carregar seu código em um arquivo HTML (carregando um arquivo Javascript
+	  separado ou inserindo o Javascript no seu arquivo HTML)
+	  <br><br>
+	  Resposta comprida: Um arquivo HTML minimo seria mais ou menos assim:
+	  <br><br>
+	  <code>
+		&lt;html&gt;&lt;body&gt;
+		<br>
+		&lt;canvas id=pane width=400 height=300&gt;&lt;/canvas&gt;
+		<br>
+		&lt;script&gt;
+		<br>
+		var c = document.getElementById(&#39;pane&#39;).getContext(&#39;2d&#39;);
+		<br>
+		<br>
+		// COLE SEU CÓDIGO AQUI
+		<br>
+		<br>
+		&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</code>
+	  <br><br>
+	  Se você copiar isso aí para um arquivo, depois copiar e colar seu 
+	  código nele, depois salvar o arquivo com um nome terminado em .html você poderá
+	  abri-lo em qualquer navegador.
+	  <br><br>
+	  <b>Existe mais algum código escondido de mim?</b>
+	  <br><br>
+	  Existe um pouquinho de código escondido que tenta parar as animações quando
+	  você troca de lição e o seu código é preparado para tentar prevenir loops
+	  infinitos. Você não precisa desses para rodar seu código fora do Code Monster.
+	  <br><br>
+	  <b>Por que você não me conta mais sobre a sintaxe e terminologia do Javascript?</b>
+	  <br><br>
+	  Já existem muitos tutoriais e livros que ensinam programação Javascript explicando
+	  o que é uma variável, o que é escopo da variável, como a sintaxe do if se parece, como
+	  cada operador funciona e por aí vai. Se você que isso existem muitas opções disponíveis,
+	  muitas que são excelentes suplementos para o Code Monster.
+	  <br><br>
+	  O que é difícil de encontrar é um tutorial divertido, imersivo e que leva 
+	  você a construir coisas legais imediatamente. Code Monster foge muito da sintaxe e das
+	  explicações que podem ser encontradas em outros lugares (Use o Google quando precisar)
+	  e pula direto para a diversão do que você pode fazer se aprender a programar.
+	  <br><br>
+	  <b>Por que não funciona direito no Ipad (ou outro dispositivo móvel)?</b>
+	  <br><br>
+	  Code Monster vai carregar em muitos dispositivos móveis, pode até ser 
+	  um pouco jogável dependendo do seu dispositivo, mas não foi feito para isso.
+	  Por que não?
+	  <br><br>
+	  Muito por causa de ser difícil digitar nesses dispositivos. Escrever grande
+	  textos em um dispositivo móvel é difícil e é ainda pior quando o que você quer
+	  escrever é um código e precisa ficar olhando em outras partes do código. Tentar
+	  escrever grande quantidade de código tradicional não é uma boa experiência
+	  em dispositivos móveis.
+	  <br><br>
+	  Em parte por causa disso parece que ninguém tenha criado um grande aplicativo para 
+	  aprender a programar, mas existem bons aplicativos que ensinam conceitos de programação
+	  (como o Hopscotch, Move the Turtle e Cargo-bot).
+	  <br><br>
+	  <b>Posso usar o Code Monster Offline (quando não conectado a Internet)?</b>
+	  <br><br>
+	  Claro! Code Monster só usa a internet bem no começo, para carregar o site, depois
+	  ele nunca mais usa a Internet.
+	  <br><br>
+	  Então, por exemplo, você pode carregar o Code Monster num laptop e depois pegar um avião
+	  ou andar no parque sem conexão a internet, abrir seu laptop lá e usar o Code Monster
+	  sem Internet. Ele até salva onde você está, assim você pode voltar para a mesma
+	  lição que estava! Você não precisa de uma conexão a internet exceto no começo quando
+	  a página carrega.
+	  <br><br>
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=termos-de-uso style="display: none;">
+	<h3>Termos de Uso</h3>
+	  Code Monster from Crunchzilla is a website provided by Geeky Ventures.
+	  In order to use the Site, you must accept the terms set forth below.
+	  If you are a minor, your parent or guardian must accept the terms and
+	  full responsibility for your use of the website.  THESE TERMS OF
+	  SERVICE CONSTITUTE A BINDING LEGAL AGREEMENT BETWEEN YOU AND GEEKY
+	  VENTURES.  BY USING THE WEBSITE, YOU AGREE TO THESE TERMS.
+	  <br><br>
+	  The website HTML, text, images, audio, video, software or other
+	  content that is made available on this website are the property of
+	  Geeky Ventures or its content suppliers.  Before you use this content
+	  in some way please take care to ensure that you have the relevant
+	  rights and permissions.  You are welcome to display on your computer,
+	  download, and print pages from this website for personal and educational
+	  use only.
+	  <br><br>
+	  THE WEBSITE IS PROVIDED "AS IS".  Your use of this website is at your
+	  own risk.  Geeky Ventures disclaims all warranties, expressed or
+	  implied, including without limitation, warranties of merchantability
+	  and fitness of a particular purpose.  Geeky Ventures disclaims
+	  liability for any direct, indirect, incidental, special,
+	  consequential, exemplary, punitive or other damages, or lost profits,
+	  that may result directly or indirectly from the use of the
+	  website. This includes, without limitation, any damage to computer
+	  systems, hardware or software, loss of data, or any other performance
+	  failures, any errors, bugs, viruses or other defects that result from,
+	  or are associated with the use of this website.
+	  <br><br>
+	  Geeky Ventures may modify this agreement at any time, and such
+	  modifications shall be effective immediately.
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=privacidade style="display: none;">
+	  <h3>Politica de privacidade</h3> 
+	  Code Monster é extremamente protetor da privacidade. O Code Monster
+	  não guarda quase nenhuma informação sobre a pessoa que usa o website.
+	  <br><br>
+	  O Code Monster não requer registro. Ele não sabe o seu endereço de e-mail.
+	  Ele não sabe quem você é. Quando você usa o Code Monster você é essencialmente
+	  anônimo.
+	  <br><br>
+	  O Code Monster não usa cookies. Se você sair do site e voltar, existe um
+	  dispositivo que retorna a lição em que você estava. E que não usa cookies. 
+	  Isto é feito usando o armazenamento local via HTML5, que guarda os dados
+	  em sua máquina e não em servidores remotos. O Code Monster não sabe nem
+	  qual lição você está ou quantas lições as pessoas que o usam já completaram.
+	  É um pouco vergonhoso não fazermos isso, mas é assim que levamos a sério a 
+	  privacidade.
+	  <br><br> 
+	  Como quase todos os websites, o Code Monster possui registros nos servidores
+	  que podem conter o endereço IP usado para acessar o site. Isto é padrão em
+	  todos os servidores web e não uma tentativa de coletar dados.
+	  <br><br>
+	  De acordo com a linguagem padrão em políticas de privacidade, informações de
+	  identificação pessoal não serão repassadas para terceiros a menos que seja 
+	  requerido por lei e nós poderemos atualizar esta politica de tempos em tempos
+	  a nosso critério.
+	  <br><br>
+	  Somos muito protetores com sua privacidade. E gostamos assim.	  
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	<div id=contato style="display: none;">
+	  <h3>Contato</h3>
+	  Code Monster pode ser contactado em monster@crunchzilla.com
+	  <br><br>
+	  Code Monster adoraria ouvir suas sugestões sobre como podemos ensinar
+	  melhor. Code Monster não gosta de reclamações, mas você pode envia-las mesmo
+	  assim, e ele vai come-las -- hm, hm! -- com seus grandes e pontudos dentes.
+	  <br><br>
+	  Code Monster da Crunchzilla é um produto da Geeky Ventures.
+	  Geeky Ventures é baseada em Seattle, WA.
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+	
+	<div id=old-browser-warning style="display: none;">
+	  <h3>Aviso de navegador antigo</h3>
+	  Oh, Oh. O Code Monster não gostou do seu navegador. Seu navegador é muito
+	  antigo. Você previsa de um navegador novo.
+	  <br><br> 
+	  Code Monster gosta do <a href="http://google.com/chrome">Chrome</a>
+	  e do <a href="http://mozilla.com/firefox">Firefox</a>.  Você pode
+	  brincar com o Code Monster com esses. Vá lá pegar e vamos brincar!
+	  <br><br>
+	  Se quiser tentar usar o Code Monster assim mesmo, vá em frente e tente, 
+	  mas o Code Monster provavelmente não vai sair para brincar. Seu navegador
+	  assusta. Mim não gostar...
+	  <div class="simplemodal-close simplemodal-closex">X</div>
+	</div>
+
+    <script src=thirdparty/codemirror.js></script>
+    <script src=thirdparty/codemirror-javascript.js></script>
+    <script src=thirdparty/jshint.js></script>
+	<script src=thirdparty/jquery-1.7.2.min.js></script>
+	<script src=thirdparty/jquery.simplemodal.1.4.2.min.js></script>
+	<script src=codemonster-lessons-PT-BR.js></script>
+	<script src=codemonster.js></script>
+
+  </body>
+</html>
